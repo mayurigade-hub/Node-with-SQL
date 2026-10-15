@@ -8,11 +8,11 @@ const connection = mysql.createConnection({
   password: 'mayuri@123'
 });
 
-let q = 'INSERT INTO user (id, username, email, password) VALUES(?,?,?,?)';
-let user = ["123", "mayuri", "mayuri@example.com", "password123"];
+let q = 'INSERT INTO user (id, username, email, password) VALUES ?';
+let users = [["123b", "mayurib", "mayuri@example.comb", "password123b"], ["123c", "mayuric", "mayuri@example.comc", "password123c"]];
 
 try{
-  connection.query(q, user,(err, result) => {
+  connection.query(q, [users],(err, result) => {
   console.log(result);
 });
 }catch(err){
