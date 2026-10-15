@@ -8,14 +8,18 @@ const connection = mysql.createConnection({
   password: 'mayuri@123'
 });
 
+let q = 'SHOW TABLES';
+
 try{
-  connection.query('SHOW TABLES', (err, result) => {
+  connection.query(q,(err, result) => {
   if (err) throw err;
   console.log(result);
 });
 }catch(err){
   console.log(err);
 }
+
+connection.end(); 
 
 let getRandomUser = () => {
   return {
