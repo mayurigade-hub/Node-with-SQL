@@ -9,10 +9,27 @@ const connection = mysql.createConnection({
 });
 
 let q = 'INSERT INTO user (id, username, email, password) VALUES ?';
-let users = [["123b", "mayurib", "mayuri@example.comb", "password123b"], ["123c", "mayuric", "mayuri@example.comc", "password123c"]];
+
+
+let getRandomUser = () => {
+  return [
+    faker.string.uuid(),
+    faker.internet.username(),
+    faker.internet.email(),
+    faker.internet.password(),
+  ];
+};
+
+console.log(getRandomUser());
+
+let data = [];
+
+for (let i = 0; i <= 100; i++) {
+  data.push(getRandomUser()); //get 100 users
+} 
 
 try{
-  connection.query(q, [users],(err, result) => {
+  connection.query(q, [data],(err, result) => {
   console.log(result);
 });
 }catch(err){
@@ -21,13 +38,4 @@ try{
 
 connection.end(); 
 
-let getRandomUser = () => {
-  return {
-    id: faker.string.uuid(),
-    username: faker.internet.username(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-  };
-}
 
-console.log(getRandomUser());
