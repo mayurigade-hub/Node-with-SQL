@@ -40,6 +40,20 @@ app.get('/', (req, res) => {
 }
 });
 
+//show route - show the id, username, email if all users 
+app.get('/users', (req, res) => {
+  let q = 'SELECT * FROM user';
+  try{
+  connection.query(q, (err, users) => { 
+  res.render("showusers.ejs", {users});
+  });
+  }
+  catch(err){
+  console.log(err);
+  res.send('Error occurred while fetching data');
+  }
+});
+
 app.listen(8080, () => {
   console.log('Server is running on port 8080');  
 })
