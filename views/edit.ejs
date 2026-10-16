@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>You are here to edit the <%= user.email %></h2>
-    <form method="POST"action="/user/<%= user.id %>?_method= PATCH">
+    <form method="POST" action="/user/<%= user.id %>/edit?_method=PATCH">
         <textarea name="username" id="username" cols="30" rows="10"><%= user.username %></textarea>
     </br>
     </br>
